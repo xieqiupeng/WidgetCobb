@@ -1,9 +1,12 @@
-.gradle
-.DS_Store
-*.iml
+/.gradle
+/.DS_Store
+/WidgetCobol.iml
 /local.properties
 /build
 /captures
 /.idea/
+
 app/.idea/
+app/build/
 app/local.properties
+app/app.iml
