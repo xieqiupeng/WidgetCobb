@@ -111,4 +111,3 @@ ext {
 
     IS_UPLOADING = project.getGradle().startParameter.taskNames.any { it.contains('bintrayUpload') }
 }
-
