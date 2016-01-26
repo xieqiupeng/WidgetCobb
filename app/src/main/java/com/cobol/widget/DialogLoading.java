@@ -7,9 +7,6 @@ import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.example.widgetoauth.R;
-
-
 /**
  * 解决问题：loadingDialog。
  *

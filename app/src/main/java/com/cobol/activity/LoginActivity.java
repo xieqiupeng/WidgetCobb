@@ -28,7 +28,9 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.example.widgetoauth.R;
+
+import com.cobol.widget.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
