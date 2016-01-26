@@ -99,7 +99,7 @@ ext {
     gitUrl = 'https://github.com/xieqiupeng/WidgetCobol.git'
 
     libraryDescription = 'Android Cobol Widget'
-    libraryVersion = '1.0.0'
+    libraryVersion = '1.0.1'
 
     developerId = 'xieqiupeng'
     developerName = 'xieqiupeng'

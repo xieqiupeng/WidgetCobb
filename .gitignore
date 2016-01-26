@@ -4,7 +4,7 @@ local.properties
 /.idea/
 /.gradle/
 
-app/.idea/
-app/build/
-app/local.properties
-app/app.iml
+widget/.idea/
+widget/build/
+widget/local.properties
+widget/widget.iml
