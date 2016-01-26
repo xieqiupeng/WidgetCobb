@@ -4,7 +4,7 @@ apply plugin: 'com.jfrog.bintray'
 // This is the library version used when deploying the artifact
 version = "1.0.0"
 android {
-    compileSdkVersion 'Google Inc.:Google APIs:23'
+    compileSdkVersion 23
     buildToolsVersion '23.0.2'
     resourcePrefix "WidgetCobol"    //这个随便填
     defaultConfig {
@@ -19,9 +19,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 }
-
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
@@ -30,21 +35,96 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0+'
 }
 
+def siteUrl = 'https://github.com/xieqiupeng/WidgetCobol'   // 项目的主页
+def gitUrl = 'https://github.com/xieqiupeng/WidgetCobol.git'   // Git仓库的url
+group = "com.cobol"            // Maven Group ID for the artifact，一般填你唯一的包名
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                // Add your description here
+                name 'Android Cobol Widget'     //项目的描述 你可以多写一点
+                url siteUrl
+                // Set your license
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'xieqiupeng'        //填写的一些基本信息
+                        name '谢秋鹏'
+                        email 'xieqiupeng@gmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = "WidgetCobol"    //发布到JCenter上的项目名字
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
+}
+
 ext {
-    developerId = 'xieqiupeng '
-    developerName = 'xieqiupeng '
-    developerEmail = 'xieqiupeng@gmail.com'
     bintrayRepo = 'maven'
     bintrayName = 'WidgetCobol'
 
     publishedGroupId = 'com.cobol'
     libraryName = 'WidgetCobol'
-
     artifact = 'widget'
+
+    siteUrl = 'https://github.com/xieqiupeng/WidgetCobol'
+    gitUrl = 'https://github.com/xieqiupeng/WidgetCobol.git'
 
     libraryDescription = 'Android Cobol Widget'
     libraryVersion = '1.0.0'
 
+    developerId = 'xieqiupeng'
+    developerName = 'xieqiupeng'
+    developerEmail = 'xieqiupeng@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+
+    IS_UPLOADING = project.getGradle().startParameter.taskNames.any { it.contains('bintrayUpload') }
 }
-apply from: 'https://raw.githubusercontent.com/smasoumi/Bintray/master/install.gradle'
-apply from: 'https://raw.githubusercontent.com/smasoumi/Bintray/master/bintray.gradle'
+
