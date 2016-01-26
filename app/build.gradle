@@ -19,6 +19,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
@@ -28,3 +29,22 @@ dependencies {
     compile 'com.android.support:design:23.1.1'
     compile 'com.nineoldandroids:library:2.4.0+'
 }
+
+ext {
+    developerId = 'xieqiupeng '
+    developerName = 'xieqiupeng '
+    developerEmail = 'xieqiupeng@gmail.com'
+    bintrayRepo = 'maven'
+    bintrayName = 'WidgetCobol'
+
+    publishedGroupId = 'com.cobol'
+    libraryName = 'WidgetCobol'
+
+    artifact = 'widget'
+
+    libraryDescription = 'Android Cobol Widget'
+    libraryVersion = '1.0.0'
+
+}
+apply from: 'https://raw.githubusercontent.com/smasoumi/Bintray/master/install.gradle'
+apply from: 'https://raw.githubusercontent.com/smasoumi/Bintray/master/bintray.gradle'
