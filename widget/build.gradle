@@ -92,7 +92,7 @@ ext {
     bintrayName = 'WidgetCobol'
 
     publishedGroupId = 'com.cobol'
-    libraryName = 'WidgetCobol'
+    libraryName = 'widget'
     artifact = 'widget'
 
     siteUrl = 'https://github.com/xieqiupeng/WidgetCobol'
