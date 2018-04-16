@@ -1,0 +1,10 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/selected"
+    android:oneshot="false">
+    <item
+        android:duration="40"
+        android:drawable="@null" />
+    <item
+        android:duration="40"
+        android:drawable="@null" />
+</animation-list>
