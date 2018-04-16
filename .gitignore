@@ -8,3 +8,7 @@ widget/.idea/
 widget/build/
 widget/local.properties
 widget/widget.iml
+build/
+lib-cobb/.gitignore
+*.iml
+*.pro
