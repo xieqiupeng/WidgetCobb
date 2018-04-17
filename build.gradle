@@ -31,7 +31,7 @@ task clean(type: Delete) {
 
 ext {
     setup = [compileSdk: 27,
-             buildTools: "27.0.0",
+             buildTools: "27.0.3",
              minSdk    : 21,
              targetSdk : 27,
              vcode     : 29,
