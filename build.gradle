@@ -37,13 +37,13 @@ ext {
             vname     : "1.8.2"
     ]
     versions = [
-            Support : "27.1.1",
+            Support : "28.0.0-rc01",
             RxJava  : "2.1.0",
             EventBus: "3.1.1",
             FastJson: "1.2.46",
             Glide   : "4.8.0",
             Retrofit: "2.4.0",
-            Okhttp  : "3.4.1",
+            OkHttp  : "3.4.1",
             Dagger  : "2.8",
             UtilCode: "1.14.0"
     ]
