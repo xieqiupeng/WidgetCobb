@@ -1,27 +1,27 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
-        jcenter()
         google()
+        jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.1'
+        classpath "com.android.tools.build:gradle:3.1.4"
         // 自动化maven打包插件
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+        classpath "com.github.dcendents:android-maven-gradle-plugin:1.4.1"
         // 测试功能
-        classpath 'com.android.tools.build:gradle-experimental:0.11.1'
+        classpath "com.android.tools.build:gradle-experimental:0.11.1"
         // 自动上传至Bintray平台插件
-//        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
+//        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0"
 
     }
 }
 
 allprojects {
     repositories {
+        google()
         jcenter()
         mavenCentral()
-        maven { url 'https://www.jitpack.io' }
-        google()
+        maven { url "https://www.jitpack.io" }
     }
 }
 
@@ -30,15 +30,21 @@ task clean(type: Delete) {
 }
 
 ext {
-    setup = [compileSdk: 27,
-             buildTools: "27.0.3",
-             minSdk    : 21,
-             targetSdk : 27,
-             vcode     : 29,
-             vname     : "1.8.1"]
-    versions = [libSupport : "27.1.1",
-                libRxJava  : "2.0.1",
-                libRetrofit: "2.1.0",
-                libOkhttp  : "3.4.1",
-                libDagger  : "2.8"]
+    setup = [
+            compileSdk: 28,
+            minSdk    : 21,
+            vcode     : 30,
+            vname     : "1.8.2"
+    ]
+    versions = [
+            Support : "27.1.1",
+            RxJava  : "2.1.0",
+            EventBus: "3.1.1",
+            FastJson: "1.2.46",
+            Glide   : "4.8.0",
+            Retrofit: "2.4.0",
+            Okhttp  : "3.4.1",
+            Dagger  : "2.8",
+            UtilCode: "1.14.0"
+    ]
 }
